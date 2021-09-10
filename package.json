@@ -1,0 +1,26 @@
+{
+  "name": "my-awesome-package",
+  "version": "1.0.0",
+  "engines": {
+    "node": "14.16.0"
+  },
+  "description": "The best package you will ever find.",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/yarnpkg/example-yarn-package",
+    "type": "git"
+  },
+  "scripts": {
+    "dev": "npx nodemon server.js",
+    "build": "cd client && yarn install && yarn build"
+  },
+  "author": "Yarn Contributor",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "4.17.1",
+    "express-handlebars": "3.1.0",
+    "socket.io": "2.2.0",
+    "uuid": "^8.3.2"
+  }
+}
