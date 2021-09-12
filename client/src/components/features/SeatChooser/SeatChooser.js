@@ -9,7 +9,7 @@ class SeatChooser extends React.Component {
     const { loadSeats, loadSeatsData } = this.props;
     console.log(loadSeats);
     loadSeats();
-    this.socket = io((process.env.NODE_ENV === 'production') ? 'nameless-harbor-56478.herokuapp.com' : 'localhost:8000'); //localhost:3000 zamiast nameless do odpalania lokalnie
+    this.socket = io((process.env.NODE_ENV === 'production') ? 'localhost:3000' : 'localhost:8000'); //localhost:3000 zamiast nameless-harbor-56478.herokuapp.com do odpalania lokalnie
     this.socket.on('seatsUpdated', (seats) => loadSeatsData(seats));
   }
 
