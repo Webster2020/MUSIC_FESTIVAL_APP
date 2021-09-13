@@ -36,7 +36,11 @@ app.use((req, res) => {
 
 //new
 // connects our backend code with the database
-mongoose.connect('mongodb://localhost:27017/NewWaveDB', { useNewUrlParser: true });
+//local: 'mongodb://localhost:27017/NewWaveDB'
+
+const dbPassword = '1234qwer';
+const dbName = 'NewWaveDB';
+mongoose.connect(`mongodb+srv://webster2020:${dbPassword}@cluster0.013rz.mongodb.net/${dbName}?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.once('open', () => {
