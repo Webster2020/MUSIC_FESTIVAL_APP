@@ -2,10 +2,10 @@ const Seats = require('../models/seats.model');
 
 exports.getAll = async (req, res) => {
   try {
-      res.json(await Seats.find());
+    res.json(await Seats.find());
   }
   catch(err) {
-      res.status(500).json({ message: err });
+    res.status(500).json({ message: err });
   }
 };
 
