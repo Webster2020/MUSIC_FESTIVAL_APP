@@ -1,9 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-//new 29.5
 const mongoose = require('mongoose');
-
 const socket = require('socket.io');
 
 const testimonialsRoutes = require('./routes/testimonials.routes');
@@ -40,7 +38,13 @@ app.use((req, res) => {
 
 const dbPassword = '1234qwer';
 const dbName = 'NewWaveDB';
-mongoose.connect(`mongodb+srv://webster2020:${dbPassword}@cluster0.013rz.mongodb.net/${dbName}?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
+
+const dbLocalURI = 'mongodb://localhost:27017/NewWaveDB';
+const dbAtlasURI = `mongodb+srv://webster2020:${dbPassword}@cluster0.013rz.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+
+const dbURI = process.env.NODE_ENV === 'production' ? dbAtlasURI : dbLocalURI;
+
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.once('open', () => {
@@ -51,6 +55,8 @@ db.on('error', err => console.log('Error ' + err));
 const server = app.listen(process.env.PORT || 8000, () => {
   console.log('Server is running on port: 8000');
 }); //new
+
+module.exports = server;
 
 const io = socket(server);
 

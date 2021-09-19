@@ -11,6 +11,10 @@ router.post('/concerts', ConcertController.newDocument);
 router.put('/concerts/:id', ConcertController.changeDocument);
 router.delete('/concerts/:id', ConcertController.deleteDocument);
 
+router.get('/concerts/performer/:performer', ConcertController.getByPerformer);
+router.get('/concerts/genre/:genre', ConcertController.getByGenre);
+router.get('/concerts/price/day/:day', ConcertController.getByDay);
+router.get('/concerts/price/:price_min/:price_max', ConcertController.getByPrice);
 
 // router.route('/concerts').get((req, res) => {
 // res.json(db.concerts);
